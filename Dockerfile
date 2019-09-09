@@ -34,14 +34,16 @@ RUN source /root/python3env/bin/activate \
     && pip install --upgrade pip \
     && pip3 install pipenv ansible-bender ansible
 
+COPY rootfs/entrypoint.sh /
+
 RUN sed -i "s/driver = \"overlay\"/driver = \"vfs\"/g" /etc/containers/storage.conf \
     && sed -i '/^mountopt =.*/d' /etc/containers/storage.conf \
     && sed -i "s/cgroup_manager = \"systemd\"/cgroup_manager = \"cgroupfs\"/g" /usr/share/containers/libpod.conf \
+    && sed -i "s/# events_logger = \"journald\"/events_logger = \"file\"/g" /usr/share/containers/libpod.conf \
     && cp -a /usr/share/containers/libpod.conf /etc/containers/ \
-    && sed -i "s/cgroup_manager = \"systemd\"/cgroup_manager = \"cgroupfs\"/g" /etc/containers/libpod.conf
+    && sed -i "s/cgroup_manager = \"systemd\"/cgroup_manager = \"cgroupfs\"/g" /etc/containers/libpod.conf \
+    && chmod +x /entrypoint.sh
 
 WORKDIR /root
-
-COPY rootfs/entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
