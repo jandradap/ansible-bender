@@ -12,6 +12,7 @@ Run the container:
 ```bash
 docker run --name nginxexample \
 --rm --privileged \
+-v $HOME/.ssh:/root/.ssh:ro \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $(pwd):/usr/src:rw \
 -it jorgeandrada/ansible-bender bash
