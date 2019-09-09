@@ -1,0 +1,20 @@
+---
+- name: test ansible-bender
+  hosts: all
+  vars:
+    ansible_bender:
+      base_image: centos:centos7
+
+      target_image:
+        name: bender-nginx
+        cmd: "nginx -g \"daemon off;\""
+        labels:
+          built-by: '{{ ansible_user }}'
+
+  roles:
+    - nginxinc.nginx
+
+  tasks:
+  - name: Run a sample command
+    command: 'ls -lha /etc/nginx'
+...
