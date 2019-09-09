@@ -16,15 +16,18 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 			org.label-schema.docker.cmd=""
 
 RUN yum -y install epel-release \
-    && yum install -y buildah \
+    && yum install -y \
+        git \
+        gcc \
+        wget \
+        curl \
+        openssl-devel \
+        buildah \
         podman \
         python36u \
         python36-libs \
         python36-devel \
         python36-pip \
-        git \
-        gcc \
-        openssl-devel \
         python-virtualenv \
     && yum clean all
 
