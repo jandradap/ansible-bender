@@ -12,9 +12,9 @@ Run the container:
 docker run --name nginxexample \
 --rm --privileged \
 -v $HOME/.ssh:/root/.ssh:ro \
--v /var/run/docker.sock:/var/run/docker.sock \
+-v /var/run/docker.sock:/var/run/docker.sock:ro \
 -v /sys/fs/cgroup:/sys/fs/cgroup:rw \
--v $(pwd):/usr/src:rw \
+-v $(pwd):/usr/src:ro \
 -it jorgeandrada/ansible-bender bash
 ```
 

@@ -3,7 +3,10 @@
   hosts: all
   vars:
     ansible_bender:
-      base_image: centos:centos7
+      base_image: centos/systemd
+      working_container:
+        volumes:
+          - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
 
       target_image:
         name: bender-nginx
