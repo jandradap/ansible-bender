@@ -44,6 +44,6 @@ RUN sed -i "s/driver = \"overlay\"/driver = \"vfs\"/g" /etc/containers/storage.c
     && sed -i "s/cgroup_manager = \"systemd\"/cgroup_manager = \"cgroupfs\"/g" /etc/containers/libpod.conf \
     && chmod +x /entrypoint.sh
 
-WORKDIR /root
+WORKDIR /usr/src
 
 ENTRYPOINT ["/entrypoint.sh"]
