@@ -13,7 +13,7 @@ docker run --name nginxexample \
 --rm --privileged \
 -v $HOME/.ssh:/root/.ssh:ro \
 -v /var/run/docker.sock:/var/run/docker.sock:ro \
--v /sys/fs/cgroup:/sys/fs/cgroup:rw \
+-v /sys/fs/cgroup:/sys/fs/cgroup:ro \
 -v $(pwd):/usr/src:ro \
 -it jorgeandrada/ansible-bender bash
 ```

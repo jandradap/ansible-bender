@@ -6,7 +6,7 @@
       base_image: centos/systemd
       working_container:
         volumes:
-          - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+          - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
       target_image:
         name: bender-nginx
